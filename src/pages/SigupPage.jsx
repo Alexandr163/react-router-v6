@@ -36,8 +36,9 @@ const SignUpPage = () => {
     const [loading, setLoading] = useState(false);
     const [successful, setSuccessful] = useState(false);
     const { message } = useSelector((state) => state.message);
-    const dispatch = useDispatch();
+
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(clearMessage());
@@ -47,11 +48,12 @@ const SignUpPage = () => {
         const { username, email, password } = formValues;
         setLoading(true);
         setSuccessful(false);
+
         dispatch(signUp({ username, email, password }))
             .unwrap()
             .then(() => {
                 setSuccessful(true);
-                navigate("/o=psts")
+                navigate("/posts");
             })
             .catch(() => {
                 setSuccessful(false);
@@ -115,7 +117,7 @@ const SignUpPage = () => {
             </FormikProvider>
             <p className='text-slate-600 text-sm'>
                 <span> Already have account? </span>
-                <StyledNavLink styleType='underline' to='/auth/login'>
+                <StyledNavLink styleType='underline' to={"/auth/login"}>
                     Log In
                 </StyledNavLink>
             </p>

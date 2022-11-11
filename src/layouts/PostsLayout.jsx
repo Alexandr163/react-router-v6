@@ -5,30 +5,29 @@ import { Outlet } from "react-router-dom";
 // Components
 import BackgroundGradiend from "../components/BackgroundGradient";
 import ScreenWidthWrapper from "../components/ScreenWidthWrapper";
-// Pages
 
 //Store
 import { getPosts } from "../store/postsSlice";
 
 const PostsLayout = () => {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-  useEffect(() => {
-    const loadPostData = () => {
-      dispatch(getPosts());
-    };
-    loadPostData();
-  }, [dispatch]);
+    useEffect(() => {
+        const loadPostData = () => {
+            dispatch(getPosts());
+        };
+        loadPostData();
+    }, [dispatch]);
 
-  // let { path } = useRouteMatch();
-  return (
-    <>
-      <BackgroundGradiend />
-      <ScreenWidthWrapper>
-        <Outlet />
-      </ScreenWidthWrapper>
-    </>
-  );
+    // let { path } = useRouteMatch();
+    return (
+        <>
+            <BackgroundGradiend />
+            <ScreenWidthWrapper>
+                <Outlet />
+            </ScreenWidthWrapper>
+        </>
+    );
 };
 
 export default PostsLayout;
